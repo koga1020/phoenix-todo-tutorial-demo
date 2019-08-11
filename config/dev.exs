@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :todo_tutorial, TodoTutorial.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "todo_tutorial_dev",
-  hostname: "localhost",
+  username: "default",
+  password: "secret",
+  database: "default",
+  hostname: "postgres",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
