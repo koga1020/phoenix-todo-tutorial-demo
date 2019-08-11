@@ -1,7 +1,4 @@
 version: "3"
-networks:
-  backend:
-    driver: bridge
 services:
   app:
     build: ./dockerfiles/app
@@ -11,8 +8,6 @@ services:
       - "${PHOENIX_PORT}:4000"
     environment:
       - PHOENIX_VERSION=${PHOENIX_VERSION}
-    networks:
-      - backend
   postgres:
     build: ./dockerfiles/db
     volumes:
@@ -23,5 +18,3 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    networks:
-      - backend
