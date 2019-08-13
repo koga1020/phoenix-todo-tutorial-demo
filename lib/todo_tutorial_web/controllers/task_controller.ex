@@ -16,10 +16,10 @@ defmodule TodoTutorialWeb.TaskController do
 
   def create(conn, %{"task" => task_params}) do
     case Todo.create_task(task_params) do
-      {:ok, task} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "Task created successfully.")
-        |> redirect(to: Routes.task_path(conn, :show, task))
+        |> redirect(to: Routes.task_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -41,10 +41,10 @@ defmodule TodoTutorialWeb.TaskController do
     task = Todo.get_task!(id)
 
     case Todo.update_task(task, task_params) do
-      {:ok, task} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "Task updated successfully.")
-        |> redirect(to: Routes.task_path(conn, :show, task))
+        |> redirect(to: Routes.task_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", task: task, changeset: changeset)
