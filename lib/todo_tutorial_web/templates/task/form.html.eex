@@ -13,10 +13,6 @@
   <%= checkbox f, :is_finished %>
   <%= error_tag f, :is_finished %>
 
-  <%= label f, :finished_at %>
-  <%= datetime_select f, :finished_at %>
-  <%= error_tag f, :finished_at %>
-
   <div>
     <%= submit "Save" %>
   </div>
