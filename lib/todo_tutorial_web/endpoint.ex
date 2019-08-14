@@ -1,6 +1,7 @@
 defmodule TodoTutorialWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :todo_tutorial
 
+  socket "/live", Phoenix.LiveView.Socket
   socket "/socket", TodoTutorialWeb.UserSocket,
     websocket: true,
     longpoll: false

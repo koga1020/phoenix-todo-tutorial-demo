@@ -15,7 +15,10 @@ config :todo_tutorial, TodoTutorialWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "y7o+li8It9i9PBQtMfjgjxJwYrpMXkvn1E1sPeJjtIBm3VUDIJhGl3w4TqBXFf6N",
   render_errors: [view: TodoTutorialWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: TodoTutorial.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: TodoTutorial.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+    signing_salt: "TqgWIJtpxiYSJ5Ev64aEmlKIhTgnaIoP"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,

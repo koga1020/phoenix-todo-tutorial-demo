@@ -24,6 +24,7 @@ defmodule TodoTutorialWeb do
       import Plug.Conn
       import TodoTutorialWeb.Gettext
       alias TodoTutorialWeb.Router.Helpers, as: Routes
+      import Phoenix.LiveView.Controller, only: [live_render: 3]
     end
   end
 
@@ -42,6 +43,7 @@ defmodule TodoTutorialWeb do
       import TodoTutorialWeb.ErrorHelpers
       import TodoTutorialWeb.Gettext
       alias TodoTutorialWeb.Router.Helpers, as: Routes
+      import Phoenix.LiveView, only: [live_render: 2, live_render: 3, live_link: 1, live_link: 2]
     end
   end
 
@@ -50,6 +52,7 @@ defmodule TodoTutorialWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 
