@@ -18,7 +18,10 @@ defmodule TodoTutorial.Todo do
 
   """
   def list_tasks do
-    Repo.all(Task)
+    Task
+    |> where(is_finished: false)
+    |> order_by(desc: :inserted_at)
+    |> Repo.all()
   end
 
   @doc """

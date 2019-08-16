@@ -3,10 +3,10 @@ defmodule TodoTutorialWeb.TaskController do
 
   alias TodoTutorial.Todo
   alias TodoTutorial.Todo.Task
+  alias Phoenix.LiveView
 
   def index(conn, _params) do
-    tasks = Todo.list_tasks()
-    render(conn, "index.html", tasks: tasks)
+    LiveView.Controller.live_render(conn, TodoTutorialWeb.TaskLive, session: %{})
   end
 
   def new(conn, _params) do
