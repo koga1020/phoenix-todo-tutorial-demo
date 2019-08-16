@@ -4,7 +4,11 @@ defmodule TodoTutorialWeb.TaskControllerTest do
   alias TodoTutorial.Todo
 
   @create_attrs %{finished_at: ~N[2010-04-17 14:00:00], is_finished: true, name: "some name"}
-  @update_attrs %{finished_at: ~N[2011-05-18 15:01:01], is_finished: false, name: "some updated name"}
+  @update_attrs %{
+    finished_at: ~N[2011-05-18 15:01:01],
+    is_finished: false,
+    name: "some updated name"
+  }
   @invalid_attrs %{finished_at: nil, is_finished: nil, name: nil}
 
   def fixture(:task) do
@@ -75,6 +79,7 @@ defmodule TodoTutorialWeb.TaskControllerTest do
     test "deletes chosen task", %{conn: conn, task: task} do
       conn = delete(conn, Routes.task_path(conn, :delete, task))
       assert redirected_to(conn) == Routes.task_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.task_path(conn, :show, task))
       end

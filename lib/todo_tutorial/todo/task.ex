@@ -22,9 +22,10 @@ defmodule TodoTutorial.Todo.Task do
     now = %{NaiveDateTime.utc_now() | microsecond: {0, 0}}
     put_change(changeset, :finished_at, now)
   end
+
   def put_finished_at_change(%Ecto.Changeset{changes: %{is_finished: false}} = changeset) do
     put_change(changeset, :finished_at, nil)
   end
-  def put_finished_at_change(changeset), do: changeset
 
+  def put_finished_at_change(changeset), do: changeset
 end

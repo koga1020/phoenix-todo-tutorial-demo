@@ -7,7 +7,11 @@ defmodule TodoTutorial.TodoTest do
     alias TodoTutorial.Todo.Task
 
     @valid_attrs %{finished_at: ~N[2010-04-17 14:00:00], is_finished: true, name: "some name"}
-    @update_attrs %{finished_at: ~N[2011-05-18 15:01:01], is_finished: false, name: "some updated name"}
+    @update_attrs %{
+      finished_at: ~N[2011-05-18 15:01:01],
+      is_finished: false,
+      name: "some updated name"
+    }
     @invalid_attrs %{finished_at: nil, is_finished: nil, name: nil}
 
     def task_fixture(attrs \\ %{}) do
