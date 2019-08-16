@@ -17,7 +17,6 @@ defmodule TodoTutorialWeb.TaskLive do
   def handle_event("add_task", %{"task" => task_params}, socket) do
     case Todo.create_task(task_params) do
       {:ok, _} ->
-
         {:noreply,
          assign(socket,
            tasks: Todo.list_tasks() |> IO.inspect(),
