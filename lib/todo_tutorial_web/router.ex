@@ -21,7 +21,7 @@ defmodule TodoTutorialWeb.Router do
     resources "/tasks", TaskController
   end
 
-  scope "/api", TodoTutorialWeb.Api do
+  scope "/api", TodoTutorialWeb.Api, as: :api do
     pipe_through :api
 
     resources "/tasks", TaskController

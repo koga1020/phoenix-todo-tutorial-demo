@@ -6,8 +6,12 @@ defmodule TodoTutorialWeb.Api.TaskController do
 
   action_fallback TodoTutorialWeb.FallbackController
 
-  def index(conn, _params) do
-    tasks = Todo.list_tasks()
+  def index(conn, params) do
+    options = [
+      include_finished: Map.get(params, "include_finished") == "true"
+    ]
+
+    tasks = Todo.list_tasks(options)
     render(conn, "index.json", tasks: tasks)
   end
 

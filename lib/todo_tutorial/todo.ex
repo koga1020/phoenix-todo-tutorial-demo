@@ -17,11 +17,18 @@ defmodule TodoTutorial.Todo do
       [%Task{}, ...]
 
   """
-  def list_tasks do
+  def list_tasks(opts \\ []) do
     Task
-    |> where(is_finished: false)
+    |> filter_by_is_finished(Keyword.get(opts, :include_finished))
     |> order_by(desc: :inserted_at)
     |> Repo.all()
+  end
+
+  def filter_by_is_finished(query, true), do: query
+
+  def filter_by_is_finished(query, _) do
+    query
+    |> where(is_finished: false)
   end
 
   @doc """
