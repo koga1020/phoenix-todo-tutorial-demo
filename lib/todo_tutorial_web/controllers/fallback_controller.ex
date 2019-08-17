@@ -12,4 +12,12 @@ defmodule TodoTutorialWeb.FallbackController do
     |> put_view(TodoTutorialWeb.ErrorView)
     |> render(:"404")
   end
+
+  def call(conn, {:error, %Ecto.Changeset{} = changeset}) do
+    conn
+    |> put_status(:unprocessable_entity)
+    |> put_view(TodoTutorialWeb.ChangesetView)
+    |> render("error.json", changeset: changeset)
+  end
+
 end
