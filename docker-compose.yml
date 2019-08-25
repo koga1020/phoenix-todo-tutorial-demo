@@ -18,3 +18,11 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    volumes:
+      - ./priv/swagger:/usr/share/nginx/html/swagger
+    environment:
+      API_URL: ./swagger/swagger.json
+    ports:
+      - "${SWAGGER_UI_PORT}:8080"

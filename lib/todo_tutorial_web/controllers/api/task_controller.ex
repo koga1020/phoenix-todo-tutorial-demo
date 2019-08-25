@@ -1,10 +1,57 @@
 defmodule TodoTutorialWeb.Api.TaskController do
   use TodoTutorialWeb, :controller
+  use PhoenixSwagger
 
   alias TodoTutorial.Todo
   alias TodoTutorial.Todo.Task
 
   action_fallback TodoTutorialWeb.FallbackController
+
+  def swagger_definitions do
+    %{
+      Task:
+        swagger_schema do
+          title("Task")
+
+          properties do
+            id(:integer, "Task ID")
+            name(:string, "Task name", required: true)
+            is_finished(:boolean, "Task is finished")
+            finished_at(:string, "timestamp when task completed", format: :datetime)
+          end
+
+          example(%{
+            id: 123,
+            name: "sample task",
+            is_finished: false,
+            finished_at: nil
+          })
+        end,
+      TaskRequest:
+        swagger_schema do
+          title("TaskRequest")
+          property(:task, Schema.ref(:Task), "The task details")
+        end,
+      TaskResponse:
+        swagger_schema do
+          title("TaskResponse")
+          property(:data, Schema.ref(:Task), "The task details")
+        end,
+      TasksResponse:
+        swagger_schema do
+          title("TasksReponse")
+          property(:data, Schema.array(:Task), "The tasks details")
+        end
+    }
+  end
+
+  swagger_path :index do
+    get("/api/tasks")
+    summary("List Tasks")
+    parameter(:include_finished, :query, :string, "when true, include finished task")
+
+    response(200, "OK", Schema.ref(:TasksResponse))
+  end
 
   def index(conn, params) do
     options = [

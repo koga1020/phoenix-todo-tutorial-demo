@@ -44,5 +44,6 @@ defmodule TodoTutorialWeb.Endpoint do
     key: "_todo_tutorial_key",
     signing_salt: "0LwDOGgI"
 
+  plug CORSPlug
   plug TodoTutorialWeb.Router
 end

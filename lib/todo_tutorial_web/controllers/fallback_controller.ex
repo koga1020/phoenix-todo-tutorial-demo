@@ -19,5 +19,4 @@ defmodule TodoTutorialWeb.FallbackController do
     |> put_view(TodoTutorialWeb.ChangesetView)
     |> render("error.json", changeset: changeset)
   end
-
 end

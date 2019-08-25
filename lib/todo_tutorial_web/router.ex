@@ -26,4 +26,13 @@ defmodule TodoTutorialWeb.Router do
 
     resources "/tasks", TaskController
   end
+
+  def swagger_info do
+    %{
+      info: %{
+        version: "1.0",
+        title: "ToDo Tutorial API"
+      }
+    }
+  end
 end

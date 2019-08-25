@@ -75,3 +75,14 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# Configure Swagger
+config :todo_tutorial, :phoenix_swagger,
+  swagger_files: %{
+    "priv/swagger/swagger.json" => [
+      router: TodoTutorialWeb.Router,
+      endpoint: TodoTutorialWeb.Endpoint
+    ]
+  }
+
+config :phoenix_swagger, json_library: Jason
