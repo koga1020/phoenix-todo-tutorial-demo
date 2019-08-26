@@ -1,0 +1,28 @@
+version: "3"
+services:
+  app:
+    build: ./dockerfiles/app
+    volumes:
+      - ${APP_CODE_PATH_HOST}:/app
+    ports:
+      - "${PHOENIX_PORT}:4000"
+    environment:
+      - PHOENIX_VERSION=${PHOENIX_VERSION}
+  postgres:
+    build: ./dockerfiles/db
+    volumes:
+      - ${DATA_PATH_HOST}/${COMPOSE_PROJECT_NAME}/postgres:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    volumes:
+      - ./priv/swagger:/usr/share/nginx/html/swagger
+    environment:
+      API_URL: ./swagger/swagger.json
+    ports:
+      - "${SWAGGER_UI_PORT}:8080"

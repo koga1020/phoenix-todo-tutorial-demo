@@ -1,0 +1,30 @@
+<h1>Listing Tasks</h1>
+<%= form_for @changeset, "#", [phx_submit: :add_task], fn f -> %>
+  <%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p>タスクを保存できませんでした</p>
+  </div>
+  <% end %>
+  <%= text_input f, :name, placeholder: "タスクを入力" %>
+  <%= error_tag f, :name %>
+  <%= submit "登録", phx_disable_with: "登録しています..." %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for task <- @tasks do %>
+    <tr>
+      <td>
+          <%= checkbox(:task, :is_finished, phx_click: "toggle_is_finished", phx_value: task.id, value: task.is_finished) %>
+      </td>
+      <td><%= task.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
