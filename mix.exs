@@ -42,7 +42,7 @@ defmodule TodoTutorial.MixProject do
       {:phoenix_ecto, "~> 4.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
+      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view", ref: "a622997b2b07088194811f96cfad6af7a17529af"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_swagger, github: "xerions/phoenix_swagger"},
       {:plug_cowboy, "~> 2.0"},
